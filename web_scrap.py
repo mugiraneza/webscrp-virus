@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt 
 import time
+import os.path
 
 def scrap():
     src = req.get('https://www.worldometers.info/coronavirus/')
@@ -44,5 +45,8 @@ def scrap():
     plt.xlabel(f"{when}")
     plt.ylabel("Numbers")
     timees = str(int(time.time()))
+    os.makedirs("images", exist_ok=True)
+    #	if not os.path.isdir('images'):
+    #   os.makedirs('images')
     plt.savefig(f"images/{timees}", bbox_inches = "tight")
 scrap()
